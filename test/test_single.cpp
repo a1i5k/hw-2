@@ -3,6 +3,7 @@
 
 extern "C" {
     #include "single_thread.c"
+    #include "multi_thread.c"
 }
 
 TEST(test1, single) {
@@ -111,6 +112,19 @@ TEST(test10, single) {
     array[3] = 1;
     int result = single_thread(array, size);
     EXPECT_EQ(result, 104857595);
+    free(array);
+}
+
+TEST(test11, single & multi) {
+    size_t size = 104857600;
+    int *array = (int *) malloc(size * sizeof(int));
+    for (size_t i = 0; i < size; ++i) {
+        array[i] = i;
+    }
+    array[5] = 1;
+    array[3] = 1;
+    int result = single_thread(array, size);
+    EXPECT_EQ(result, multi_thread(array, size));
     free(array);
 }
 

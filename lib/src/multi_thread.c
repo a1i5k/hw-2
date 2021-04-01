@@ -122,12 +122,12 @@ int multi_thread(const int *array, size_t size) {
     pthread_t *threads;
     threads = (pthread_t *) malloc(count_thread * sizeof(pthread_t));
     if (threads == NULL) {
-        printf("No memory allocated"); 
+        printf("No memory allocated");
         free(array_limits);
         return MEMORY_NO_ALLOCATED;
     }
     args **limits = (args **)malloc(count_thread * sizeof(args*));
-    if (limits == NULL) {  
+    if (limits == NULL) {
         free(array_limits);
         free(threads);
         printf("No memory allocated");

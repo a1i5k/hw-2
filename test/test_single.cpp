@@ -115,7 +115,7 @@ TEST(test10, single) {
     free(array);
 }
 
-TEST(test11, single & multi) {
+TEST(test11, single vs multi) {
     size_t size = 104857600;
     int *array = (int *) malloc(size * sizeof(int));
     for (size_t i = 0; i < size; ++i) {
